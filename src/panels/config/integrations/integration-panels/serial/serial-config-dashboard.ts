@@ -35,6 +35,7 @@ import { showConfigFlowDialog } from "../../../../../dialogs/config-flow/show-di
 import { mdiEsphomeLogo } from "../../../../../resources/esphome-logo-svg";
 import { showSerialPortInfoDialog } from "./show-dialog-serial-port-info";
 import "../../../../../layouts/hass-subpage";
+import { panelIsReady } from "../../../../../layouts/panel-ready";
 import { haStyle } from "../../../../../resources/styles";
 import type { HomeAssistant, Route } from "../../../../../types";
 import { brandsUrl } from "../../../../../util/brands-url";
@@ -92,8 +93,9 @@ export class SerialConfigDashboard extends LitElement {
 
   @state() private _error?: string;
 
-  protected firstUpdated(): void {
-    this._fetchPorts();
+  protected async firstUpdated(): Promise<void> {
+    await this._fetchPorts();
+    await panelIsReady(this);
   }
 
   private async _fetchPorts(): Promise<void> {
@@ -409,7 +411,7 @@ export class SerialConfigDashboard extends LitElement {
         .hass=${this.hass}
         .narrow=${this.narrow}
         .header=${this.hass.localize("ui.panel.config.serial.title")}
-        back-path="/config"
+        back-path="/config/connectivity"
       >
         <ha-icon-button
           slot="toolbar-icon"

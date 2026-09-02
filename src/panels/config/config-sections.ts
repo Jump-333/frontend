@@ -1,4 +1,5 @@
 import {
+  mdiAccessPointNetwork,
   mdiAccount,
   mdiBackupRestore,
   mdiBadgeAccountHorizontal,
@@ -92,13 +93,6 @@ export const configSections: Record<string, PageNavigation[]> = {
       component: "lovelace",
       adminOnly: true,
     },
-    {
-      path: "/config/voice-assistants",
-      translationKey: "voice_assistants",
-      iconPath: mdiMicrophone,
-      iconColor: "#3263C3",
-      adminOnly: true,
-    },
   ],
   dashboard_external_settings: [
     {
@@ -109,6 +103,23 @@ export const configSections: Record<string, PageNavigation[]> = {
     },
   ],
   dashboard_2: [
+    {
+      path: "/config/connectivity",
+      translationKey: "connectivity",
+      iconPath: mdiAccessPointNetwork,
+      iconColor: "#00838F",
+      core: true,
+      adminOnly: true,
+    },
+    {
+      path: "/config/voice-assistants",
+      translationKey: "voice_assistants",
+      iconPath: mdiMicrophone,
+      iconColor: "#3263C3",
+      adminOnly: true,
+    },
+  ],
+  connectivity: [
     {
       path: "/config/matter",
       iconPath:
@@ -529,8 +540,8 @@ export const configSections: Record<string, PageNavigation[]> = {
       adminOnly: true,
     },
     {
-      path: "/config/ai-tasks",
-      translationKey: "ai_tasks",
+      path: "/config/ai",
+      translationKey: "ai",
       iconPath: mdiStarFourPoints,
       iconColor: "#8B69E3",
       core: true,

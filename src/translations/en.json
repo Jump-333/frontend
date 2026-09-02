@@ -325,8 +325,10 @@
           "pause": "Pause",
           "cancel": "Cancel",
           "finish": "Finish",
+          "restart": "Restart",
           "set": "Set"
-        }
+        },
+        "presets": "Presets"
       },
       "vacuum": {
         "actions": {
@@ -1178,12 +1180,12 @@
         "integration": "Integration",
         "device": "Device",
         "area": "Area",
-        "entity": "Related entities",
-        "group": "Part of the following groups",
-        "scene": "Part of the following scenes",
-        "script": "Part of the following scripts",
-        "automation": "Part of the following automations",
-        "blueprint": "Using blueprint"
+        "entity": "Entities",
+        "group": "Groups",
+        "scene": "Scenes",
+        "script": "Scripts",
+        "automation": "Automations",
+        "blueprint": "Blueprint"
       },
       "data-table": {
         "search": "Search",
@@ -1633,7 +1635,8 @@
             "knx": "[%key:ui::panel::config::dashboard::knx::main%]",
             "insteon": "[%key:ui::panel::config::dashboard::insteon::main%]",
             "voice-assistants": "[%key:ui::panel::config::dashboard::voice_assistants::main%]",
-            "ai-tasks": "[%key:ui::panel::config::ai_tasks::caption%]"
+            "connectivity": "[%key:ui::panel::config::dashboard::connectivity::main%]",
+            "ai": "[%key:ui::panel::config::ai::caption%]"
           }
         },
         "filter_placeholder": "Search entities",
@@ -1684,13 +1687,14 @@
           "person": "Edit person"
         },
         "details": "Details",
+        "entity": "Entity",
+        "state": "State",
+        "context": "Context",
         "floor": "Floor",
-        "entity_id": "Entity ID",
+        "entity_id": "ID",
         "copy_value": "Copy {label}: {value}",
         "labels": "Labels",
         "toggle_yaml_mode": "Toggle YAML mode",
-        "translated": "Translated",
-        "raw": "Raw",
         "back_to_info": "Back to info",
         "info": "Information",
         "related": "Related",
@@ -1898,6 +1902,27 @@
         "camera": {
           "download_snapshot": "Download snapshot",
           "failed_to_download": "Failed to download snapshot. Please check the logs for more information."
+        },
+        "timer": {
+          "edit_mode": "Edit presets",
+          "reset_favorites": "Remove all presets",
+          "reset_favorites_text": "Do you want to remove all presets for this timer?",
+          "copy_favorites": "Copy presets to...",
+          "copy_favorites_helper": "Select one or more timers to receive the copied presets from this timer.",
+          "copy_favorites_entities": "[%key:ui::panel::lovelace::editor::card::generic::entities%]",
+          "preset": {
+            "set": "Start timer for {value}",
+            "edit": "Edit preset {value}",
+            "delete": "Delete preset {number}",
+            "delete_confirm_title": "Delete preset?",
+            "delete_confirm_text": "This preset will be permanently deleted.",
+            "delete_confirm_action": "[%key:ui::common::delete%]",
+            "add": "Add new preset",
+            "edit_title": "Edit preset",
+            "add_title": "Add preset",
+            "duration": "[%key:ui::dialogs::helper_settings::timer::duration%]",
+            "duration_error": "The duration must be at least one second."
+          }
         }
       },
       "entity_registry": {
@@ -2716,6 +2741,10 @@
             "main": "Dashboards",
             "secondary": "Organize how you interact with your home"
           },
+          "connectivity": {
+            "main": "Connectivity",
+            "secondary": "Communication protocols and radios for your devices"
+          },
           "voice_assistants": {
             "main": "Voice assistants",
             "secondary": "Manage your voice assistants"
@@ -2906,6 +2935,21 @@
           "gen_data_description": "Suggest automation names.",
           "gen_image_header": "Image generation tasks",
           "gen_image_description": "Generate images."
+        },
+        "mcp": {
+          "header": "Model Context Protocol",
+          "description": "Add one of the URLs below to your AI agent. See the {documentation_link} for agent-specific instructions.",
+          "documentation": "documentation",
+          "enable": "[%key:ui::common::enable%]",
+          "disable": "[%key:ui::common::disable%]",
+          "disable_confirm_title": "Disable the Model Context Protocol server?",
+          "disable_confirm_text": "AI agents connected to the server will lose access to Home Assistant.",
+          "your_api_header": "Your MCP API",
+          "apis_header": "Individual MCP APIs",
+          "copy_url": "Copy URL",
+          "configure": "Configure",
+          "error_load": "Failed to load the Model Context Protocol configuration",
+          "error_delete_entry": "Failed to disable the Model Context Protocol server"
         },
         "apps": {
           "caption": "Apps",
@@ -5058,10 +5102,7 @@
               }
             },
             "cloud": {
-              "title": "The power of Home Assistant Cloud",
-              "register": {
-                "confirm_email": "Confirm email"
-              }
+              "title": "The power of Home Assistant Cloud"
             },
             "local": {
               "title": "Installing apps",
@@ -6501,9 +6542,7 @@
             "auto_login_failed": "We couldn't sign you in automatically. Confirm your email, then sign in.",
             "nothing_arrived": "Nothing arrived? Check your spam folder, or {resend_link}.",
             "resend_link": "resend the confirmation email",
-            "resend_confirm_email": "Resend confirmation email",
             "clicked_confirm": "I opened the confirmation link",
-            "confirm_email": "Check the email we just sent to {email} and open the confirmation link to continue.",
             "verification_email_sent": "Verification email sent. Check your inbox for instructions on how to activate your account."
           },
           "account": {
@@ -8817,9 +8856,9 @@
           "intro": "Share anonymized information from your installation to help make Home Assistant better and help us convince manufacturers to add local control and privacy-focused features.",
           "download_device_info": "Preview device analytics"
         },
-        "ai_tasks": {
-          "caption": "AI tasks",
-          "description": "Configure AI suggestions and task preferences"
+        "ai": {
+          "caption": "AI",
+          "description": "Configure AI suggestions, task preferences, and the Model Context Protocol server"
         },
         "entity_id_format": {
           "caption": "Entity ID format",
@@ -10896,6 +10935,26 @@
                   "increment": "Increment",
                   "decrement": "Decrement",
                   "reset": "Reset"
+                }
+              },
+              "timer-actions": {
+                "label": "Timer actions",
+                "customize": "[%key:ui::panel::lovelace::editor::features::types::counter-actions::customize%]",
+                "actions": "[%key:ui::panel::lovelace::editor::features::types::counter-actions::actions%]",
+                "actions_list": {
+                  "start": "[%key:ui::card::timer::actions::start%]",
+                  "pause": "[%key:ui::card::timer::actions::pause%]",
+                  "cancel": "[%key:ui::card::timer::actions::cancel%]",
+                  "finish": "[%key:ui::card::timer::actions::finish%]"
+                }
+              },
+              "timer-presets": {
+                "label": "Timer presets",
+                "description": "This feature uses the timer's presets. To manage them, open the timer's more info dialog and select 'Edit presets' in the overflow menu.",
+                "style": "[%key:ui::panel::lovelace::editor::features::types::numeric-input::style%]",
+                "style_list": {
+                  "buttons": "[%key:ui::panel::lovelace::editor::features::types::numeric-input::style_list::buttons%]",
+                  "dropdown": "[%key:ui::panel::lovelace::editor::features::types::climate-preset-modes::style_list::dropdown%]"
                 }
               },
               "fan-preset-modes": {
