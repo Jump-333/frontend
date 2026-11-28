@@ -296,7 +296,7 @@ importers:
         version: 1.0.3
       '@maplibre/maplibre-gl-leaflet':
         specifier: 0.1.4
-        version: 0.1.4(@types/leaflet@1.9.22)(leaflet@1.9.4)(maplibre-gl@6.19.0)
+        version: 0.1.4(@types/leaflet@1.9.23)(leaflet@1.9.4)(maplibre-gl@6.19.0)
       '@mdi/js':
         specifier: 7.4.47
         version: 7.4.47
@@ -560,8 +560,8 @@ importers:
         specifier: 7.0.2
         version: 7.0.2
       '@types/leaflet':
-        specifier: 1.9.22
-        version: 1.9.22
+        specifier: 1.9.23
+        version: 1.9.23
       '@types/leaflet.markercluster':
         specifier: 1.5.6
         version: 1.5.6
@@ -3489,8 +3489,8 @@ packages:
   '@types/leaflet.markercluster@1.5.6':
     resolution: {integrity: sha512-I7hZjO2+isVXGYWzKxBp8PsCzAYCJBc29qBdFpquOCkS7zFDqUsUvkEOyQHedsk/Cy5tocQzf+Ndorm5W9YKTQ==}
 
-  '@types/leaflet@1.9.22':
-    resolution: {integrity: sha512-h3lhECYEKDasG7LFHu+GiHqAvsgLuQvlJvVZzJDGONo3sEL+wUOqSFLnwkZlK0qVxnxbuGFW8iBlJNYs5wgndA==}
+  '@types/leaflet@1.9.23':
+    resolution: {integrity: sha512-rpvCoR7fQ2I4tFGIDjuyRAXl25e9YiJ9eE7AdJY5aJF8tkgg4ph3fRb9zafM6ZB1YO5LYziZQwh/vW3IOat/+Q==}
 
   '@types/lodash.merge@4.6.9':
     resolution: {integrity: sha512-23sHDPmzd59kUgWyKGiOMO2Qb9YtqRO/x4IhkgNUiPQ1+5MUVqi6bCZeq9nBJ17msjIMbEIO5u+XW4Kz6aGUhQ==}
@@ -10222,9 +10222,9 @@ snapshots:
     dependencies:
       kdbush: 4.1.0
 
-  '@maplibre/maplibre-gl-leaflet@0.1.4(@types/leaflet@1.9.22)(leaflet@1.9.4)(maplibre-gl@6.19.0)':
+  '@maplibre/maplibre-gl-leaflet@0.1.4(@types/leaflet@1.9.23)(leaflet@1.9.4)(maplibre-gl@6.19.0)':
     dependencies:
-      '@types/leaflet': 1.9.22
+      '@types/leaflet': 1.9.23
       leaflet: 1.9.4
       maplibre-gl: 6.19.0
 
@@ -11393,9 +11393,9 @@ snapshots:
 
   '@types/leaflet.markercluster@1.5.6':
     dependencies:
-      '@types/leaflet': 1.9.22
+      '@types/leaflet': 1.9.23
 
-  '@types/leaflet@1.9.22':
+  '@types/leaflet@1.9.23':
     dependencies:
       '@types/geojson': 7946.0.16
 
