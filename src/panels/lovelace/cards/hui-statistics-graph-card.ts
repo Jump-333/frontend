@@ -17,7 +17,11 @@ import { createSearchParam } from "../../../common/url/search-params";
 import "../../../components/ha-card";
 import "../../../components/ha-icon-next";
 import "../../../components/ha-tooltip";
-import { apiContext, formattersContext } from "../../../data/context";
+import {
+  apiContext,
+  formattersContext,
+  uiContext,
+} from "../../../data/context";
 import {
   getSuggestedPeriod,
   validateEnergyCollectionKey,
@@ -101,6 +105,10 @@ export class HuiStatisticsGraphCard extends LitElement implements LovelaceCard {
   @state()
   @consumeEntityStates({ entityIdPath: ["_entityIds"] })
   private _stateObjs?: Record<string, HassEntity>;
+
+  @state()
+  @consume({ context: uiContext, subscribe: true })
+  private _panels?: HomeAssistant["panels"];
 
   @state()
   @consume({ context: formattersContext, subscribe: true })
@@ -344,16 +352,23 @@ export class HuiStatisticsGraphCard extends LitElement implements LovelaceCard {
             ? html`
                 <h1 class="card-header">
                   ${this._config.title}
-                  <a
-                    id=${this._historyLinkId}
-                    href=${configUrl}
-                    aria-label=${this._localize("panel.history")}
-                  >
-                    <ha-icon-next></ha-icon-next>
-                  </a>
-                  <ha-tooltip for=${this._historyLinkId} placement="left">
-                    ${this._localize("panel.history")}
-                  </ha-tooltip>
+                  ${
+                    this._panels?.history
+                      ? html`<a
+                            id=${this._historyLinkId}
+                            href=${configUrl}
+                            aria-label=${this._localize("panel.history")}
+                          >
+                            <ha-icon-next></ha-icon-next>
+                          </a>
+                          <ha-tooltip
+                            for=${this._historyLinkId}
+                            placement="left"
+                          >
+                            ${this._localize("panel.history")}
+                          </ha-tooltip>`
+                      : nothing
+                  }
                 </h1>
               `
             : nothing

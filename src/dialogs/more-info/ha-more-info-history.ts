@@ -75,12 +75,10 @@ export class MoreInfoHistory extends LitElement {
                 }
               </div>
               ${
-                __DEMO__
+                __DEMO__ || !this.hass.panels.history
                   ? nothing
                   : html`<a href=${this._showMoreHref}
-                      >${this.hass.localize(
-                        "ui.dialogs.more_info_control.show_more"
-                      )}</a
+                      >${this.hass.localize("ui.dialogs.more_info_control.show_more")}</a
                     >`
               }
             </div>

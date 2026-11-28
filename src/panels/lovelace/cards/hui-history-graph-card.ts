@@ -337,16 +337,23 @@ export class HuiHistoryGraphCard extends LitElement implements LovelaceCard {
             ? html`
                 <h1 class="card-header">
                   ${this._config.title}
-                  <a
-                    id=${this._historyLinkId}
-                    href=${configUrl}
-                    aria-label=${this.hass.localize("panel.history")}
-                  >
-                    <ha-icon-next></ha-icon-next>
-                  </a>
-                  <ha-tooltip for=${this._historyLinkId} placement="left">
-                    ${this.hass.localize("panel.history")}
-                  </ha-tooltip>
+                  ${
+                    this.hass.panels.history
+                      ? html`<a
+                            id=${this._historyLinkId}
+                            href=${configUrl}
+                            aria-label=${this.hass.localize("panel.history")}
+                          >
+                            <ha-icon-next></ha-icon-next>
+                          </a>
+                          <ha-tooltip
+                            for=${this._historyLinkId}
+                            placement="left"
+                          >
+                            ${this.hass.localize("panel.history")}
+                          </ha-tooltip>`
+                      : nothing
+                  }
                 </h1>
               `
             : nothing
