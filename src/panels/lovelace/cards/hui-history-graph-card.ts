@@ -256,13 +256,16 @@ export class HuiHistoryGraphCard extends LitElement implements LovelaceCard {
 
   protected shouldUpdate(changedProps: PropertyValues<this>): boolean {
     // Allow update when components list changes so we can retry subscription
+    const oldHass = changedProps.get("hass") as HomeAssistant | undefined;
+    if (oldHass && oldHass.panels !== this.hass!.panels) {
+      return true;
+    }
     if (
       !this._subscribed &&
       !this._error &&
       this._config &&
       changedProps.has("hass")
     ) {
-      const oldHass = changedProps.get("hass") as HomeAssistant | undefined;
       if (
         oldHass &&
         oldHass.config.components !== this.hass!.config.components

@@ -108,6 +108,9 @@ export class HuiStatisticsGraphCard extends LitElement implements LovelaceCard {
 
   @state()
   @consume({ context: uiContext, subscribe: true })
+  @transform<Pick<HomeAssistant, "panels">, HomeAssistant["panels"]>({
+    transformer: ({ panels }) => panels,
+  })
   private _panels?: HomeAssistant["panels"];
 
   @state()
